@@ -64,7 +64,7 @@ rules:
   - RULE-SET,Microsoft,Microsoft
   - RULE-SET,Google,Google
   - RULE-SET,Telegram,Telegram
-  - RULE-SET,Twitter,全球加速
+  - RULE-SET,Twitter,Twitter
   - RULE-SET,Game,Game
   - RULE-SET,ProxyLite,全球加速
   - RULE-SET,ChinaIP,DIRECT
