@@ -9,7 +9,7 @@ proxy-groups:
   - {name: Google, type: select, proxies: [DIRECT, Select, Auto, HK, JP, TW, US, SG], icon: https://ghp.ci/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Google.png }
   - {name: Telegram, type: select, proxies: [DIRECT, Select, Auto, HK, JP, TW, US, SG], icon: https://ghp.ci/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Telegram.png }
   - {name: YouTube, type: select, proxies: [DIRECT, Select, Auto, HK, JP, TW, US, SG], icon: https://ghp.ci/https://raw.githubusercontent.com/Orz-3/mini/master/Color/YouTube.png }
-  - {name: NetFlix, type: select, proxies: [DIRECT, Select, Auto, HK, JP, TW, US, SG], icon: https://ghp.ci/https://raw.githubusercontent.com/Orz-3/mini/master/Alpha/Netflix.png }
+  - {name: NetFlix, type: select, proxies: [DIRECT, Select, Auto, HK, JP, TW, US, SG], icon: https://ghp.ci/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Netflix.png }
   - {name: GitHub, type: select, proxies: [DIRECT, Select, Auto, HK, JP, TW, US, SG], icon: https://ghp.ci/https://raw.githubusercontent.com/Orz-3/mini/master/Color/github.png }
   - {name: TikTok, type: select, proxies: [DIRECT, Select, Auto, HK, JP, TW, US, SG], icon: https://ghp.ci/https://raw.githubusercontent.com/Orz-3/mini/master/Color/TikTok.png }
   - {name: Apple, type: select, proxies: [DIRECT, Select, Auto, HK, JP, TW, US, SG], icon: https://ghp.ci/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png }
