@@ -8,7 +8,7 @@ proxy-groups:
 #分流分组
   - {name: Proxy, type: select, proxies: [Select, DIRECT, Auto, HK, JP, TW, US, SG], icon: https://ghp.ci/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png }
   - {name: Google, type: select, proxies: [DIRECT, Select, Auto, HK, JP, TW, US, SG], icon: https://ghp.ci/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Google.png }
-  - {name: OneDrive, type: select, proxies: [DIRECT, Select, Auto, HK, JP, TW, US, SG], icon: https://ghp.ci/https://raw.githubusercontent.com/Orz-3/mini/master/Color/OneDrive.png }
+  - {name: OneDrive, type: select, proxies: [DIRECT, Select, Auto, HK, JP, TW, US, SG], icon: https://ghp.ci/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Onedrive.png }
   - {name: Telegram, type: select, proxies: [DIRECT, Select, Auto, HK, JP, TW, US, SG], icon: https://ghp.ci/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Telegram.png }
   - {name: YouTube, type: select, proxies: [DIRECT, Select, Auto, HK, JP, TW, US, SG], icon: https://ghp.ci/https://raw.githubusercontent.com/Orz-3/mini/master/Color/YouTube.png }
   - {name: NetFlix, type: select, proxies: [DIRECT, Select, Auto, HK, JP, TW, US, SG], icon: https://ghp.ci/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Netflix.png }
