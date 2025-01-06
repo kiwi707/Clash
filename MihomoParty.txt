@@ -1,5 +1,6 @@
 #==========================================
-# 支持手动选择、自动测速、广告屏蔽、兜底分流、按国家分组节点、策略图标等  
+# 该配置由墨鱼配置更改而来，原配置地址：https://github.com/ddgksf2013/Profile/blob/master/MihomoParty.yaml
+# 支持手动选择、自动测速、广告屏蔽、 兜底分流、按国家分组节点、策略图标等  
 # 主界面添加本配置[覆写]，然后使用内置的[SubStore]添加机场，之后去[订阅管理]，在配置的[编辑信息]中绑定机场订阅，开启系统代理即可使用
 #==========================================
 
@@ -7,6 +8,7 @@ proxy-groups:
 #分流分组
   - {name: Proxy, type: select, proxies: [Select, DIRECT, Auto, HK, JP, TW, US, SG], icon: https://ghp.ci/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png }
   - {name: Google, type: select, proxies: [DIRECT, Select, Auto, HK, JP, TW, US, SG], icon: https://ghp.ci/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Google.png }
+  - {name: OneDrive, type: select, proxies: [DIRECT, Select, Auto, HK, JP, TW, US, SG], icon: https://ghp.ci/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/OneDrive.png }
   - {name: Telegram, type: select, proxies: [DIRECT, Select, Auto, HK, JP, TW, US, SG], icon: https://ghp.ci/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Telegram.png }
   - {name: YouTube, type: select, proxies: [DIRECT, Select, Auto, HK, JP, TW, US, SG], icon: https://ghp.ci/https://raw.githubusercontent.com/Orz-3/mini/master/Color/YouTube.png }
   - {name: NetFlix, type: select, proxies: [DIRECT, Select, Auto, HK, JP, TW, US, SG], icon: https://ghp.ci/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Netflix.png }
@@ -42,6 +44,7 @@ rule-providers:
   Bahamut:     {behavior: classical, interval: 86400, format: yaml, type: http, url: https://ghp.ci/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Bahamut/Bahamut.yaml ,                    path: ./ruleset/Bahamut.yaml      } 
   GlobalMedia: {behavior: classical, interval: 86400, format: yaml, type: http, url: https://ghp.ci/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia_Classical.yaml ,  path: ./ruleset/GlobalMedia.yaml  }
   Apple:       {behavior: classical, interval: 86400, format: yaml, type: http, url: https://ghp.ci/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple_Classical.yaml ,              path: ./ruleset/Apple.yaml        }
+  OneDrive:    {behavior: classical, interval: 86400, format: yaml, type: http, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/OneDrive/OneDrive.yaml ,                                 path: ./ruleset/OneDrive.yaml       }
   Microsoft:   {behavior: classical, interval: 86400, format: yaml, type: http, url: https://ghp.ci/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.yaml ,                path: ./ruleset/Microsoft.yaml    }
   Google:      {behavior: classical, interval: 86400, format: yaml, type: http, url: https://ghp.ci/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Google/Google.yaml ,                      path: ./ruleset/Google.yaml       }
   Telegram:    {behavior: classical, interval: 86400, format: yaml, type: http, url: https://ghp.ci/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.yaml ,                  path: ./ruleset/Telegram.yaml     }
@@ -56,6 +59,7 @@ rule-providers:
   Speedtest:   {behavior: classical, interval: 86400, format: yaml, type: http, url: https://ghp.ci/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Speedtest/Speedtest.yaml ,                path: ./ruleset/Speedtest.yaml       }
 # 分流Policy 
 rules:
+  - RULE-SET,OneDrive,OneDrive
   - RULE-SET,Speedtest,Speedtest
   - RULE-SET,Netflix,NetFlix
   - RULE-SET,TikTok,TikTok
