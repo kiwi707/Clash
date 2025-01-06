@@ -8,6 +8,7 @@ proxy-groups:
 #分流分组
   - {name: Proxy, type: select, proxies: [Select, DIRECT, Auto, HK, JP, TW, US, SG], icon: https://ghp.ci/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png }
   - {name: Google, type: select, proxies: [DIRECT, Select, Auto, HK, JP, TW, US, SG], icon: https://ghp.ci/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Google.png }
+  - {name: OneDrive, type: select, proxies: [DIRECT, Select, Auto, HK, JP, TW, US, SG], icon: https://ghp.ci/https://raw.githubusercontent.com/Orz-3/mini/master/Color/OneDrive.png }
   - {name: Telegram, type: select, proxies: [DIRECT, Select, Auto, HK, JP, TW, US, SG], icon: https://ghp.ci/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Telegram.png }
   - {name: YouTube, type: select, proxies: [DIRECT, Select, Auto, HK, JP, TW, US, SG], icon: https://ghp.ci/https://raw.githubusercontent.com/Orz-3/mini/master/Color/YouTube.png }
   - {name: NetFlix, type: select, proxies: [DIRECT, Select, Auto, HK, JP, TW, US, SG], icon: https://ghp.ci/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Netflix.png }
@@ -35,6 +36,7 @@ proxy-groups:
 # 分流规则 
 rule-providers:
   Direct:      {behavior: classical, interval: 86400, format: yaml, type: http, url: https://ghp.ci/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Direct/Direct.yaml ,                      path: ./ruleset/Direct.yaml       }
+  Google:      {behavior: classical, interval: 86400, format: yaml, type: http, url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/OneDrive/OneDrive.yaml ,                                 path: ./ruleset/OneDrive.yaml       }
   Lan:         {behavior: classical, interval: 86400, format: yaml, type: http, url: https://ghp.ci/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan.yaml ,                            path: ./ruleset/Lan.yaml          }
   Download:    {behavior: classical, interval: 86400, format: yaml, type: http, url: https://ghp.ci/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Download/Download.yaml ,                  path: ./ruleset/Download.yaml     }
   Ad:          {behavior: classical, interval: 86400, format: text, type: http, url: https://ghp.ci/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list ,                                                path: ./ruleset/anti-ad-clash.yaml}
@@ -57,6 +59,7 @@ rule-providers:
   Speedtest:   {behavior: classical, interval: 86400, format: yaml, type: http, url: https://ghp.ci/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Speedtest/Speedtest.yaml ,                path: ./ruleset/Speedtest.yaml       }
 # 分流Policy 
 rules:
+  - RULE-SET,OneDrive,OneDrive
   - RULE-SET,Speedtest,Speedtest
   - RULE-SET,Netflix,NetFlix
   - RULE-SET,TikTok,TikTok
