@@ -15,7 +15,7 @@
 # url 里填写自己的订阅,名称不能重复
 proxy-providers:
   provider1:
-    url: "订阅一"
+    url: "https://cloudfront-cdn-hk-iplc1.com/sub/r/wrjCscKxw6HDl8KDwoxnwp7Cr3rCjMKvw53Dj8K7wr9jw5DDpcK1wrnCrcOlwqPCqcKZ/"
     type: http
     interval: 86400
     health-check: {enable: true,url: "https://www.gstatic.com/generate_204",interval: 300}
@@ -24,7 +24,7 @@ proxy-providers:
     filter: "(?i)^(?!.*(?:流量|套餐|到期|官网|过期)).*$"
 
   provider2:
-    url: "订阅二"
+    url: "https://app.mitce.com/?sid=207640&token=gfcei"
     type: http
     interval: 86400
     health-check: {enable: true,url: "https://www.gstatic.com/generate_204",interval: 300}
@@ -33,7 +33,7 @@ proxy-providers:
     filter: "(?i)^(?!.*(?:流量|套餐|到期|官网|过期)).*$"
 
   provider3:
-    url: "订阅三"
+    url: "https://sub4.haiqilai.lol/api/v1/client/subscribe?token=7f81cee3228ac1a9a23e6508a1b3aa01"
     type: http
     interval: 86400
     health-check: {enable: true,url: "https://www.gstatic.com/generate_204",interval: 300}
@@ -41,10 +41,10 @@ proxy-providers:
       additional-prefix: "[provider3]"
     filter: "(?i)^(?!.*(?:流量|套餐|到期|官网|过期)).*$"
 
-proxies: 
-  - name: "直连"
-    type: direct
-    udp: true
+#proxies: 
+#  - name: "DIRECT"
+#    type: direct
+#    udp: true
 
 mixed-port: 7890
 ipv6: true
@@ -114,98 +114,100 @@ proxy-groups:
 
   - name: Proxy
     type: select
-    proxies: [自动选择,直连,香港,台湾,日本,新加坡,美国,其它地区,全部节点]
+    proxies: [AUTO,ALL,DIRECT,HK,TW,JP,SG,KR,US,Other]
     
   - name: Advertising
     type: select
-    proxies: [REJECT,直连]
+    proxies: [REJECT,DIRECT]
 
   - name: Google
     type: select
-    proxies: [Proxy,香港,台湾,日本,新加坡,美国,其它地区,全部节点,自动选择]
+    proxies: [Proxy,AUTO,ALL,DIRECT,HK,TW,JP,SG,KR,US,Other]
 
   - name: Telegram
     type: select
-    proxies: [Proxy,香港,台湾,日本,新加坡,美国,其它地区,全部节点,自动选择]
+    proxies: [Proxy,AUTO,ALL,DIRECT,HK,TW,JP,SG,KR,US,Other]
 
   - name: Twitter
     type: select
-    proxies: [Proxy,香港,台湾,日本,新加坡,美国,其它地区,全部节点,自动选择]
+    proxies: [Proxy,AUTO,ALL,DIRECT,HK,TW,JP,SG,KR,US,Other]
 
-  - name: 哔哩哔哩
+  - name: BiliBili
     type: select
-    proxies: [Proxy,直连]
+    proxies: [Proxy,DIRECT]
 
-  - name: 巴哈姆特
+  - name: Bahamut
     type: select
-    proxies: [Proxy,台湾]
+    proxies: [Proxy,TW]
 
   - name: YouTube
     type: select
-    proxies: [Proxy,香港,台湾,日本,新加坡,美国,其它地区,全部节点,自动选择]
+    proxies: [Proxy,AUTO,ALL,DIRECT,HK,TW,JP,SG,KR,US,Other]
 
   - name: NETFLIX
     type: select
-    proxies: [Proxy,香港,台湾,日本,新加坡,美国,其它地区,全部节点,自动选择]
+    proxies: [Proxy,AUTO,ALL,DIRECT,HK,TW,JP,SG,KR,US,Other]
 
   - name: Spotify
     type: select
-    proxies:  [Proxy,香港,台湾,日本,新加坡,美国,其它地区,全部节点,自动选择,直连]
+    proxies:  [Proxy,AUTO,ALL,DIRECT,HK,TW,JP,SG,KR,US,Other]
 
   - name: Github
     type: select
-    proxies:  [Proxy,直连,香港,台湾,日本,新加坡,美国,其它地区,全部节点,自动选择]
-
-  - name: 国内
-    type: select
-    proxies:  [直连,Proxy,香港,台湾,日本,新加坡,美国,其它地区,全部节点,自动选择]
+    proxies:  [Proxy,AUTO,ALL,DIRECT,HK,TW,JP,SG,KR,US,Other]
     
   - name: TikTok
     type: select
-    proxies:  [Proxy,香港,台湾,日本,新加坡,美国,其它地区,全部节点,自动选择]
+    proxies:  [Proxy,AUTO,ALL,DIRECT,TW,JP,SG,KR,US,Other]
     
   - name: OpenAI
     type: select
-    proxies:  [ChatGPT,美国] 
+    proxies:  [ChatGPT,US] 
     
   - name: Microsoft
     type: select
-    proxies:  [Proxy,直连,ChatGPT,香港,台湾,日本,新加坡,美国,其它地区,全部节点,自动选择] 
+    proxies:  [Proxy,AUTO,ALL,DIRECT,HK,TW,JP,SG,KR,US,Other] 
     
   - name: Instagram
     type: select
-    proxies:  [Proxy,香港,台湾,日本,新加坡,美国,其它地区,全部节点,自动选择] 
+    proxies:  [Proxy,AUTO,ALL,DIRECT,HK,TW,JP,SG,KR,US,Other] 
     
   - name: GlobalMedia
     type: select
-    proxies:  [Proxy,ChatGPT,香港,台湾,日本,新加坡,美国,其它地区,全部节点,自动选择] 
+    proxies:  [Proxy,AUTO,ALL,DIRECT,HK,TW,JP,SG,KR,US,Other] 
     
      #分隔,下面是地区分组
-  - name: 香港
+  - name: HK
     type: fallback
     include-all: true
     filter: "(?i)港|hk|hongkong|hong kong"
     tolerance: 10
 
-  - name: 台湾
+  - name: TW
     type: url-test
     include-all: true
     filter: "(?i)台|tw|taiwan"
     tolerance: 10
 
-  - name: 日本
+  - name: JP
     type: url-test
     include-all: true
     filter: "(?i)日|jp|japan"
     tolerance: 10
+    
+  - name: KR
+    type: url-test
+    include-all: true
+    filter: "(?i)(韩|KR|kr|Korea)"
+    tolerance: 10
 
-  - name: 美国
+  - name: US
     type: url-test
     include-all: true
     filter: "(?i)美|us|unitedstates|united states"
     tolerance: 10
 
-  - name: 新加坡
+  - name: SG
     type: url-test
     include-all: true
     filter: "(?i)(新|sg|singapore)"
@@ -218,18 +220,18 @@ proxy-groups:
     tolerance: 10
     use: [provider2] 
 
-  - name: 其它地区
+  - name: Other
     type: url-test
     include-all: true
     filter: "(?i)^(?!.*(?:🇭🇰|🇯🇵|🇺🇸|🇸🇬|🇨🇳|港|hk|hongkong|台|tw|taiwan|日|jp|japan|新|sg|singapore|美|us|unitedstates)).*"
     tolerance: 10
 
-  - name: 全部节点
+  - name: ALL
     type: select
     use: [provider1,provider2,provider3]
     tolerance: 10
 
-  - name: 自动选择
+  - name: AUTO
     type: url-test
     use: [provider1,provider2,provider3] 
     tolerance: 10
@@ -283,9 +285,11 @@ rules:
   - RULE-SET,adguard,Advertising
   - RULE-SET,Advertising_rule,Advertising
   - RULE-SET,AdvertisingMiTV_rule,Advertising
-  - RULE-SET,private_ip,直连,no-resolve
+  - RULE-SET,private_ip,DIRECT,no-resolve
   - RULE-SET,github_domain,Github
-  - RULE-SET,GoogleVoice_rule,美国
+  - RULE-SET,GoogleVoice_rule,US
+  - RULE-SET,Line_rule,KR
+  - RULE-SET,Whatsapp_rule,US
   - RULE-SET,Instagram_rule,Instagram
   - RULE-SET,twitter_domain,Twitter
   - RULE-SET,youtube_domain,YouTube
@@ -293,21 +297,21 @@ rules:
   - RULE-SET,telegram_domain,Telegram
   - RULE-SET,OpenAI_rule,OpenAI
   - RULE-SET,TikTok_domain,TikTok
-  - RULE-SET,WeChat_rule,直连
+  - RULE-SET,WeChat_rule,DIRECT
   - RULE-SET,Microsoft_rule,Microsoft
   - RULE-SET,netflix_domain,NETFLIX
-  - RULE-SET,bilibili_domain,哔哩哔哩
-  - RULE-SET,bahamut_domain,巴哈姆特
+  - RULE-SET,bilibili_domain,BiliBili
+  - RULE-SET,bahamut_domain,Bahamut
   - RULE-SET,google_ip,Google
   - RULE-SET,netflix_ip,NETFLIX
   - RULE-SET,telegram_ip,Telegram
   - RULE-SET,twitter_ip,Twitter
   - RULE-SET,spotify_domain,Spotify
   - RULE-SET,GlobalMedia_rule,GlobalMedia
-  - RULE-SET,cn_domain,直连
-  - RULE-SET,geolocation-!cn,自动选择
-  - RULE-SET,Proxy_rule,自动选择
-  - RULE-SET,cn_ip,直连
+  - RULE-SET,cn_domain,DIRECT
+  - RULE-SET,geolocation-!cn,AUTO
+  - RULE-SET,Proxy_rule,AUTO
+  - RULE-SET,cn_ip,DIRECT
   - MATCH,Proxy
 
 rule-anchor:
@@ -384,6 +388,12 @@ rule-providers:
   WeChat_rule:
     <<: *classical
     url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/WeChat/WeChat.yaml"
+  Line_rule:
+    <<: *classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Line/Line.yaml"
+  Whatsapp_rule:
+    <<: *classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Whatsapp/Whatsapp.yaml"
   netflix_domain:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs"
