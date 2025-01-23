@@ -15,7 +15,7 @@
 # url 里填写自己的订阅,名称不能重复
 proxy-providers:
   provider1:
-    url: "https://cloudfront-cdn-hk-iplc1.com/sub/r/wrjCscKxw6HDl8KDwoxnwp7Cr3rCjMKvw53Dj8K7wr9jw5DDpcK1wrnCrcOlwqPCqcKZ/"
+    url: "订阅一"
     type: http
     interval: 86400
     health-check: {enable: true,url: "https://www.gstatic.com/generate_204",interval: 300}
@@ -24,7 +24,7 @@ proxy-providers:
     filter: "(?i)^(?!.*(?:流量|套餐|到期|官网|过期)).*$"
 
   provider2:
-    url: "https://app.mitce.com/?sid=207640&token=gfcei"
+    url: "订阅二"
     type: http
     interval: 86400
     health-check: {enable: true,url: "https://www.gstatic.com/generate_204",interval: 300}
@@ -33,7 +33,7 @@ proxy-providers:
     filter: "(?i)^(?!.*(?:流量|套餐|到期|官网|过期)).*$"
 
   provider3:
-    url: "https://sub4.haiqilai.lol/api/v1/client/subscribe?token=7f81cee3228ac1a9a23e6508a1b3aa01"
+    url: "订阅三"
     type: http
     interval: 86400
     health-check: {enable: true,url: "https://www.gstatic.com/generate_204",interval: 300}
