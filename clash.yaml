@@ -38,14 +38,6 @@ proxy-providers:
 #    type: direct
 #    udp: true
 proxies:
-  - name: "🇭🇰 香港 0000001"
-    type: ss
-    server: gheianygh.yangliq.com
-    port: 31001
-    cipher: aes-128-gcm
-    password: e2e2dd78-2ace-42d7-8acf-bd1924e6367b
-    udp: true
-
   - name: "香港IEPL"
     type: ss
     server: iepl.std.hk.4.3.bbbbbb.cloud
