@@ -1,0 +1,626 @@
+#  (FlClash) 配置
+# 版本 V1.8-240904
+# https://gist.github.com/liuran001/5ca84f7def53c70b554d3f765ff86a33
+# 作者: Young (https://t.me/weekin)
+# Telegram: https://t.me/weekin
+# 修改自官方示例规则 https://wiki.metacubex.one/example/#meta
+# 转载请保留此注释
+# 尽量添加了较为详尽的注释，不理解的地方建议对照 虚空终端 (Clash Meta) Docs 进行理解
+# 虚空终端 (Clash Meta) Docs 地址: https://wiki.metacubex.one
+# 不理解的地方不要乱动，如果你是小白，请按下 `Ctrl + F` 搜索 `基础配置`，只修改此部分
+
+# true 是启用
+# false 是禁用
+
+# url 里填写自己的订阅,名称不能重复
+proxy-providers:
+  P1:
+    url: "订阅一"
+    type: http
+    interval: 86400
+    health-check: {enable: true,url: "https://www.gstatic.com/generate_204",interval: 60}
+    override:
+      additional-prefix: "[P1]"
+    filter: ^(?!.*(?:群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|账号|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|\b(?:USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author)\b)).*$
+
+  P2:
+    url: "订阅二"
+    type: http
+    interval: 86400
+    health-check: {enable: true,url: "https://www.gstatic.com/generate_204",interval: 60}
+    override:
+      additional-prefix: "[P2]"
+    filter: ^(?!.*(?:群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|\b(?:USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author)\b)).*$
+
+  P3:
+    url: "订阅三"
+    type: http
+    interval: 86400
+    health-check: {enable: true,url: "https://www.gstatic.com/generate_204",interval: 60}
+    override:
+      additional-prefix: "[P3]"
+    filter: ^(?!.*(?:群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|\b(?:USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author)\b)).*$
+
+#proxies: 
+#  - name: "DIRECT"
+#    type: direct
+#    udp: true
+proxies:
+  - name: "🇭🇰 香港 0000001"
+    type: ss
+    server: gheianygh.yangliq.com
+    port: 31001
+    cipher: aes-128-gcm
+    password: e2e2dd78-2ace-42d7-8acf-bd1924e6367b
+    udp: true
+
+  - name: "香港IEPL"
+    type: ss
+    server: iepl.std.hk.4.3.bbbbbb.cloud
+    port: 1052
+    cipher: aes-128-gcm
+    password: VXPipi29nxMO
+    udp: false
+    tfo: true
+    plugin: obfs
+    plugin-opts:
+      mode: http
+      host: a43f4090543645ed9a54c802955f3d70204620.taobao.com
+
+# -------------------------------
+# 🌐 基础设置
+# -------------------------------
+mixed-port: 7890
+allow-lan: true
+ipv6: true
+unified-delay: true
+tcp-concurrent: true
+external-controller: 127.0.0.1:9090
+external-ui: ui
+external-ui-url: "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
+find-process-mode: strict
+global-client-fingerprint: chrome
+log-level: warning  # 建议设为 info/warning/error
+
+# -------------------------------
+# 💾 Profile 设置
+# -------------------------------
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+# -------------------------------
+# 🔍 流量识别（sniffer）
+# -------------------------------
+sniffer:
+  enable: true
+  sniff:
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    TLS:
+      ports: [443, 8443]
+      override-destination: true
+    QUIC:
+      ports: [443, 8443]
+  skip-domain:
+    - "Mijia Cloud"
+    - "+.push.apple.com"
+    - "+.icloud.com"
+    - "+.baidu.com"
+
+# -------------------------------
+# 🛜 系统接管（tun）
+# -------------------------------
+tun:
+  enable: true
+  stack: mixed
+  mtu: 9000
+  dns-hijack:
+    - "any:53"
+    - "tcp://any:53"
+  auto-route: true
+  auto-redirect: true
+  auto-detect-interface: true
+
+# -------------------------------
+# 🌐 DNS 配置（增强分流）
+# -------------------------------
+dns:
+  enable: true
+  ipv6: true
+  respect-rules: true
+  enhanced-mode: fake-ip
+  fake-ip-filter:
+    - "*"
+    - "+.lan"
+    - "+.local"
+    - "+.market.xiaomi.com"
+    - "+.qq.com"
+    - "+.weixin.com"
+    - "+.music.163.com"
+    - "+.youku.com"
+    - "+.iqiyi.com"
+    - "+.tencent.com"
+    - "+.oceanengine.com"
+    - "+.bytedance.com"
+    - "+.bytefcdn-oversea.com"
+
+  nameserver:
+    - https://120.53.53.53/dns-query
+    - https://223.5.5.5/dns-query
+    - tls://dns.alidns.com:853
+
+  proxy-server-nameserver:
+    - https://120.53.53.53/dns-query
+    - https://223.5.5.5/dns-query
+
+  fallback:
+    - https://dns.cloudflare.com/dns-query
+    - https://dns.google/dns-query
+    - tls://1.1.1.1
+    - tls://8.8.4.4
+
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr:
+      - 240.0.0.0/4
+
+  nameserver-policy:
+    "rule-set:cn_domain,private_domain":
+      - https://120.53.53.53/dns-query
+      - https://223.5.5.5/dns-query
+    "rule-set:geolocation-!cn":
+      - https://dns.cloudflare.com/dns-query
+      - https://dns.google/dns-query
+    "*.oceanengine.com":
+      - https://223.5.5.5/dns-query
+      - https://120.53.53.53/dns-query
+    "*.bytedance.com":
+      - https://223.5.5.5/dns-query
+      - https://120.53.53.53/dns-query
+    "*.bytefcdn-oversea.com":
+      - https://223.5.5.5/dns-query
+      - https://120.53.53.53/dns-query
+
+# -------------------------------
+
+
+proxy-groups:
+
+  - name: Proxy
+    type: select
+    proxies: [HK,US,AUTO,ALL,DIRECT,TW,JP,SG,KR,Other]
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png'
+    
+  - name: Final
+    type: select
+    proxies: [HK,US,AUTO,ALL,DIRECT,TW,JP,SG,KR,Other]
+    icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/Final.png'
+    
+  - name: Advertising
+    type: select
+    proxies: [REJECT,DIRECT]
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Advertising.png'
+    
+  #- name: YouTube
+    #type: url-test
+    #include-all: true
+    #filter: "(?i)港|hk|hongkong|hong kong"
+    #tolerance: 50
+    #interval: 300
+    #icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png'
+
+  - name: YouTube
+    type: select
+    proxies: [HK,TW,JP,SG,KR,US,Proxy,AUTO,ALL,Other]
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png'
+    
+  - name: Google
+    type: select
+    proxies: [US,Proxy,AUTO,ALL,DIRECT,HK,TW,JP,SG,KR,Other]
+    icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/Google.png'
+
+  - name: Telegram
+    type: select
+    proxies: [HK,Proxy,AUTO,ALL,DIRECT,TW,JP,SG,UK,KR,US,Other]
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png'
+
+  - name: Twitter
+    type: select
+    proxies: [US,Proxy,AUTO,ALL,DIRECT,HK,TW,JP,SG,KR,Other]
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitter.png'
+
+  - name: BiliBili
+    type: select
+    proxies: [DIRECT,TW]
+    icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/bilibili.png'
+
+  - name: Bahamut
+    type: select
+    proxies: [TW,Proxy]
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Bahamut.png'
+
+  - name: NETFLIX
+    type: select
+    proxies: [SG,Proxy,AUTO,ALL,DIRECT,HK,TW,JP,KR,US,Other]
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix.png'
+
+  - name: Spotify
+    type: select
+    proxies:  [Proxy,AUTO,ALL,DIRECT,HK,TW,JP,SG,KR,US,Other]
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png'
+
+  - name: Github
+    type: select
+    proxies:  [HK,Proxy,AUTO,ALL,DIRECT,TW,JP,SG,KR,US,Other]
+    icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/github.png'
+    
+  - name: TikTok
+    type: select
+    proxies:  [JP,Proxy,AUTO,ALL,DIRECT,TW,SG,KR,US,Other,NZL]
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TikTok.png'
+
+    
+  - name: OpenAI
+    type: select
+    proxies:  [ChatGPT,US] 
+    icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/OpenAI.png'
+    
+  - name: Microsoft
+    type: select
+    proxies:  [DIRECT,Proxy,AUTO,ALL,HK,TW,JP,SG,KR,US,Other] 
+    icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/Microsoft.png'
+    
+  - name: Instagram
+    type: select
+    proxies:  [TW,US,Proxy,AUTO,ALL,DIRECT,HK,JP,SG,KR,Other] 
+    icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/Instagram.png'
+  - name: GlobalMedia
+    type: select
+    proxies:  [Proxy,AUTO,ALL,DIRECT,HK,TW,JP,SG,KR,US,Other] 
+    icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/Streaming.png'
+    
+     #分隔,下面是地区分组
+  - name: HK
+    type: url-test
+    include-all: true
+    filter: "(?i)(hong kong|hk|hkt)|香港|中环|尖沙咀|旺角|铜锣湾|九龙|港"
+    tolerance: 50
+    interval: 300
+    icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png'
+
+
+  - name: TW
+    type: url-test
+    include-all: true
+    filter: "(?i)\\b(taiwan|tw)\\b|台湾|台北|高雄|台中|台南|新竹|基隆"
+    tolerance: 50
+    interval: 300
+    icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/TW.png'
+
+  - name: JP
+    type: url-test
+    include-all: true
+    filter: "(?i)\\b(japan|jp)\\b|日本|东京|大阪|名古屋|札幌|京都|福冈|冲绳"
+    tolerance: 50
+    interval: 300
+    icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png'
+    
+  - name: KR
+    type: url-test
+    include-all: true
+    filter: "(?i)\\b(south korea|korea|kr)\\b|韩国|首尔|釜山|仁川|大邱|大田|光州|济州"
+    tolerance: 50
+    interval: 300
+    icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/KR.png'
+
+  - name: US
+    type: url-test
+    include-all: true
+    filter: "(?i)\\b(united states|usa|us)\\b|美国|纽约|洛杉矶|芝加哥|旧金山|休斯敦|波士顿|西雅图|迈阿密|华盛顿"
+    tolerance: 50
+    interval: 300
+    icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png'
+    
+  - name: UK
+    type: url-test
+    include-all: true
+    filter: "(?i)\\b(united kingdom|uk|gb|britain|england)\\b|英国|伦敦|曼彻斯特|伯明翰|利物浦|剑桥|牛津|爱丁堡|格拉斯哥"
+    tolerance: 50
+    interval: 300
+    icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/UK.png'
+
+  - name: SG
+    type: url-test
+    include-all: true
+    filter: "(?i)\\b(singapore|sg)\\b|新加坡|星国|坡县|狮城|坡方|坡籍|坡企|新方"
+    tolerance: 50
+    interval: 300
+    icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png'
+
+  - name: TR
+    type: url-test
+    include-all: true
+    filter: "(?i)\\b(turkey|tr)\\b|土耳其|伊斯坦布尔|安卡拉|伊兹密尔"
+    tolerance: 50
+    interval: 300
+    icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/TR.png'
+    
+  - name: ChatGPT
+    type: url-test
+    use: [P2] 
+    filter: "GPT"
+    tolerance: 50
+    interval: 300 
+    icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/OpenAI.png'
+
+  - name: IN
+    type: url-test
+    include-all: true
+    filter: "(?i)\\b(india|in)\\b|印度|新德里|孟买|班加罗尔|加尔各答|金奈|海得拉巴"
+    tolerance: 50
+    interval: 300 
+    icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/XD.png'
+
+  - name: NZL
+    type: url-test
+    include-all: true
+    filter: "新西兰"
+    tolerance: 50
+    interval: 300 
+    icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/GAME.png'
+
+  - name: Other
+    type: url-test
+    include-all: true
+    filter: "^((?!(?i)(japan|jp|HKT|hong kong|-hk|taiwan|tw|singapore|sg|united states|usa|us|turkey|tr|india|in|russia|ru|south korea|korea|kr|日本|东京|大阪|名古屋|札幌|京都|福冈|冲绳|香港|中环|尖沙咀|旺角|铜锣湾|九龙|台湾|台北|高雄|台中|台南|新竹|基隆|新加坡|美国|纽约|洛杉矶|芝加哥|旧金山|休斯敦|波士顿|西雅图|迈阿密|华盛顿|土耳其|伊斯坦布尔|安卡拉|伊兹密尔|印度|新德里|孟买|班加罗尔|加尔各答|金奈|海得拉巴|俄罗斯|莫斯科|圣彼得堡|符拉迪沃斯托克|叶卡捷琳堡|喀山|韩国|首尔|釜山|仁川|大邱|大田|光州|济州)).)*$"
+    tolerance: 50
+    interval: 300
+    icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/SS.png'
+
+  - name: ALL
+    type: select
+    use: [P1,P2,P3]
+    tolerance: 50
+    interval: 300
+    icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/Dler.png'
+
+  - name: AUTO
+    type: url-test
+    use: [P1,P2,P3] 
+    tolerance: 50
+    interval: 300
+    icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/Urltest.png'
+
+  - name: Subscribe1
+    type: select
+    use: [P1] 
+    tolerance: 50
+    interval: 300
+    icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/Flower.png'
+
+  - name: Subscribe2
+    type: select
+    use: [P2] 
+    tolerance: 50
+    interval: 300
+    icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/SSlinks.png'
+
+  - name: Subscribe3
+    type: select
+    use: [P3] 
+    tolerance: 50
+    interval: 300
+    icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/Xingmeng.png'
+rules:
+  # 广告拦截规则
+  - DOMAIN-KEYWORD,googleads,REJECT
+  - DOMAIN-SUFFIX,ads.inmobi.com,REJECT
+  - DOMAIN-SUFFIX,adsappier.com,REJECT
+  - DOMAIN-SUFFIX,amazon-adsystem.com,REJECT
+  - DOMAIN-SUFFIX,appier.net,REJECT
+  - DOMAIN-SUFFIX,appiersig.com,REJECT
+  - DOMAIN-SUFFIX,bidder.criteo.com,REJECT
+  - DOMAIN-SUFFIX,c.amazon-adsystem.com,REJECT
+  - DOMAIN-SUFFIX,cdn2.inner-active.mobi,REJECT
+  - DOMAIN-SUFFIX,cr.adsappier.com,REJECT
+  - DOMAIN-SUFFIX,criteo.com,REJECT
+  - DOMAIN-SUFFIX,googleads.g.doubleclick.net,REJECT
+  - DOMAIN-SUFFIX,googleads.g.doubleclick-cn.net,REJECT
+  - DOMAIN-SUFFIX,gum.criteo.com,REJECT
+  - DOMAIN-SUFFIX,ow.pubmatic.com,REJECT
+  - DOMAIN-SUFFIX,pubmatic.com,REJECT
+  - DOMAIN-SUFFIX,sdk-dnt.ad.smaato.net,REJECT
+  - DOMAIN-SUFFIX,sdk-events.inner-active.mobi,REJECT
+  - DOMAIN-SUFFIX,smaato.net,REJECT
+  - DOMAIN-SUFFIX,tappx.com,REJECT
+  - DOMAIN-SUFFIX,wv.inner-active.mobi,REJECT
+
+  # 需要走代理的规则
+  - DOMAIN-SUFFIX,tktn.at,Proxy
+  - DOMAIN-SUFFIX,tktn.be,Proxy
+  - DOMAIN-SUFFIX,vm.talkatone.com,Proxy
+
+  # 需要直连的规则
+  - DOMAIN-SUFFIX,bfotc.cc,DIRECT
+  - DOMAIN-SUFFIX,agkn.com,DIRECT
+  - DOMAIN-SUFFIX,cohere.com,DIRECT
+  - DOMAIN-SUFFIX,crashlytics.com,DIRECT
+  - DOMAIN-SUFFIX,inmobi.com,DIRECT
+  - DOMAIN-SUFFIX,inner-active.mobi,DIRECT
+  - DOMAIN-SUFFIX,ip-api.com,DIRECT
+  - DOMAIN-SUFFIX,kochava.com,DIRECT
+  - DOMAIN-SUFFIX,mobilefuse.com,DIRECT
+  - DOMAIN-SUFFIX,talkatone.com,DIRECT
+  - DOMAIN-SUFFIX,oceanengine.com,Proxy
+  - DOMAIN-SUFFIX,bytedance.com,Proxy
+  - DOMAIN-SUFFIX,douyin.com,Proxy
+
+  # IP 直连规则
+  - IP-CIDR,205.164.56.0/24,DIRECT,no-resolve
+  - IP-CIDR,216.172.154.0/24,DIRECT,no-resolve
+  - IP-CIDR,50.117.27.0/24,DIRECT,no-resolve
+  - IP-CIDR,63.251.124.0/24,DIRECT,no-resolve
+  - IP-CIDR,69.46.75.0/24,DIRECT,no-resolve
+  - RULE-SET,adrules_domain,Advertising
+  - RULE-SET,adguard,Advertising
+  - RULE-SET,Advertising_rule,Advertising
+  - RULE-SET,AdvertisingMiTV_rule,Advertising
+  - RULE-SET,private_ip,DIRECT,no-resolve
+  - RULE-SET,github_rule,Github
+  - RULE-SET,GoogleVoice_rule,US
+  - RULE-SET,GoogleEarth_rule,JP
+  - RULE-SET,Line_rule,JP
+  - RULE-SET,Whatsapp_rule,US
+  - RULE-SET,Instagram_rule,Instagram
+  - RULE-SET,youtube_rule,YouTube
+  - RULE-SET,google_rule,Google
+  - RULE-SET,telegram_rule,Telegram
+  - RULE-SET,OpenAI_rule,OpenAI
+  - RULE-SET,Copilot_rule,OpenAI
+  - RULE-SET,TikTok_rule,TikTok
+  - RULE-SET,WeChat_rule,DIRECT
+  - RULE-SET,Microsoft_rule,Microsoft
+  - RULE-SET,netflix_rule,NETFLIX
+  - RULE-SET,bilibili_rule,BiliBili
+  - RULE-SET,bahamut_domain,Bahamut
+  - RULE-SET,twitter_rule,Twitter
+  - RULE-SET,spotify_rule,Spotify
+  - RULE-SET,GlobalMedia_rule,GlobalMedia
+  - RULE-SET,cn_domain,DIRECT
+  - RULE-SET,Lan_rule,DIRECT
+  - RULE-SET,ChinaMax_rule,DIRECT
+  - RULE-SET,cn_ip,DIRECT
+  - GEOIP,CN,DIRECT
+  - RULE-SET,Proxy_rule,Proxy
+  - RULE-SET,geolocation-!cn,Proxy
+  - MATCH,Final
+
+rule-anchor:
+  ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
+  domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
+  classical: &classical {type: http, interval: 86400, behavior: classical, format: yaml}
+  lucky: &lucky {type: http, interval: 86400, behavior: domain, format: text}
+
+rule-providers:
+
+  # ===== 去广告类规则 ===== #
+  
+  adguard:
+    <<: *lucky
+    url: "https://raw.githubusercontent.com/217heidai/adblockfilters/main/rules/adblockclash.list"
+  adrules_domain:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/Cats-Team/AdRules/main/adrules-mihomo.mrs"
+  Advertising_rule:
+    <<: *classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising_Classical.yaml"
+  AdvertisingMiTV_rule:
+    <<: *classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AdvertisingMiTV/AdvertisingMiTV.yaml"
+  
+  # ===== 社交网络类规则 ===== #
+  
+  twitter_rule:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Twitter/Twitter.yaml"
+  telegram_rule:
+    <<: *classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.yaml"
+  WeChat_rule:
+    <<: *classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/WeChat/WeChat.yaml"
+  Line_rule:
+    <<: *classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Line/Line.yaml"
+  Whatsapp_rule:
+    <<: *classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Whatsapp/Whatsapp.yaml"
+  GoogleVoice_rule:
+    <<: *classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GoogleVoice/GoogleVoice.yaml"
+  
+  # ===== 搜索引擎类规则 =====  #
+  
+  google_rule:
+    <<: *classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Google/Google.yaml"
+  OpenAI_rule:
+    <<: *classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/OpenAI/OpenAI.yaml"
+  github_rule:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GitHub/GitHub.yaml"
+  Copilot_rule:
+    <<: *classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Copilot/Copilot.yaml"
+  GoogleEarth_rule:
+    <<: *classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GoogleEarth/GoogleEarth.yaml"
+  # ===== 视频流媒体类规则 =====#
+  
+  youtube_rule:
+    <<: *classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.yaml"
+  TikTok_rule:
+    <<: *classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/TikTok/TikTok.yaml"
+  GlobalMedia_rule:
+    <<: *classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia.yaml"
+  Instagram_rule:
+    <<: *classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Instagram/Instagram.yaml"
+  netflix_rule:
+    <<: *classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix.yaml"
+  bilibili_rule:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BiliBili/BiliBili.yaml"
+  bahamut_domain:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/bahamut.mrs"
+  spotify_rule:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Spotify/Spotify.yaml"
+  
+  # ===== 企业服务类规则 ===== #
+  
+  private_domain:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"
+  cn_domain:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"
+  ehentai_domain:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/ehentai.mrs"
+  Microsoft_rule:
+    <<: *classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.yaml"
+  Proxy_rule:
+    <<: *classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Proxy/Proxy.yaml"
+  pixiv_domain:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/pixiv.mrs"
+  geolocation-!cn:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs"
+  private_ip:
+    <<: *ip
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs"
+  cn_ip:
+    <<: *ip
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs"
+  Lan_rule:
+    <<: *classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan.yaml"
+  ChinaMax_rule:
+    <<: *classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax_Classical.yaml"
+  
+  
+  
